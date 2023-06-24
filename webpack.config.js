@@ -30,10 +30,17 @@ module.exports = {
     },
     compress: false,
     port: 8080,
+    historyApiFallback: true,
   },
   plugins: [
-    new webpack.ProvidePlugin({ 
-      process: "process/browser" 
+    new webpack.ProvidePlugin({
+      process: "process/browser",
     }),
   ],
+  // solve missing process/browser module
+  resolve: {
+    fallback: {
+      "process/browser": require.resolve("process/browser"),
+    },
+  },
 };
