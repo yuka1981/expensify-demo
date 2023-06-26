@@ -126,17 +126,26 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
 // Get visible expenses
 const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
   // expenses is an array
-  return expenses.filter((expense) => {
-    const startDateMatch =
-      typeof startDate !== "number" || expense.createdAt >= startDate;
-    const endDateMatch =
-      typeof endDate !== "number" || expense.createdAt <= endDate;
-    const textMatch = expense.description
-      .toLowerCase()
-      .includes(text.toLowerCase());
+  return expenses
+    .filter((expense) => {
+      const startDateMatch =
+        typeof startDate !== "number" || expense.createdAt >= startDate;
+      const endDateMatch =
+        typeof endDate !== "number" || expense.createdAt <= endDate;
+      const textMatch = expense.description
+        .toLowerCase()
+        .includes(text.toLowerCase());
 
-    return startDateMatch && endDateMatch && textMatch;
-  });
+      // filter return
+      return startDateMatch && endDateMatch && textMatch;
+    })
+    .sort((a, b) => {
+      if (sortBy === "date") {
+        return a.createdAt < b.createdAt ? 1 : -1;
+      } else if (sortBy === "amount") {
+        return a.amount < b.amount ? 1 : -1;
+      }
+    });
 };
 
 // can not filter data in action generator or reducer
@@ -174,7 +183,7 @@ const expenseTwo = store.dispatch(
 // store.dispatch(setTextFilter("ffe"));
 // store.dispatch(setTextFilter());
 
-// store.dispatch(sortByAmount());
+store.dispatch(sortByAmount());
 // store.dispatch(sortByDate());
 
 // store.dispatch(setStartDate(100));

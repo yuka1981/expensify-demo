@@ -7,7 +7,8 @@ module.exports = {
   mode: "none",
   // entry: "./src/app.js",
   // entry: "./src/playground/redux-101.js",
-  entry: "./src/playground/redux-expensify.js",
+  entry: "./src/playground/hoc.js",
+  // entry: "./src/playground/redux-expensify.js",
   // entry: "./src/playground/destructuring.js",
   output: {
     path: path.resolve(__dirname, "public"),
