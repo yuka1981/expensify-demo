@@ -1,26 +1,6 @@
 import moment from "moment/moment.js";
 import selectExpenses from "../../selectors/expenses.js";
-
-const expenses = [
-  {
-    description: "Rent",
-    amount: 19500,
-    note: "",
-    createdAt: moment(0).subtract(4, "days").valueOf(),
-  },
-  {
-    description: "Gum",
-    amount: 2000,
-    note: "",
-    createdAt: 0,
-  },
-  {
-    description: "Water",
-    amount: 100,
-    note: "",
-    createdAt: moment(0).add(4, "day").valueOf(),
-  },
-];
+import expenses from "../fixtures/expenses";
 
 test("should fiter by text value", () => {
   const filters = {
