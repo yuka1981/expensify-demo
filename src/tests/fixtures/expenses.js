@@ -5,7 +5,7 @@ export default [
     id: "1",
     description: "Rent",
     amount: 19500,
-    note: "",
+    note: "this is rent payment",
     createdAt: moment(0).subtract(4, "days").valueOf(),
   },
   {
